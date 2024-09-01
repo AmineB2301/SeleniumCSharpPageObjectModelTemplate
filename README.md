@@ -1,7 +1,5 @@
 # Selenium Automation Template in C#
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-
 ## Project Status
 
 **In Progress...**
@@ -54,5 +52,52 @@ Before you begin, ensure you have met the following requirements:
 To set up the project locally, follow these steps:
 
 1. **Clone the repository**:
+
    ```bash
-   git clone https://github.com/your-username/seleni
+    git clone https://github.com/AmineB2301/SeleniumCSharpPageObjectModelTemplate.git
+
+   ```
+
+2. **Navigate to the project directory**:
+
+   ```bash
+   cd SeleniumCSharpPageObjectModelTemplate
+
+   ```
+
+3. **Restore NuGet packages**:
+
+   ```bash
+   dotnet restore
+
+   ```
+
+4. **Open the project in Visual Studio**:
+
+   Open the SeleniumCSharpPageObjectModelTemplate.sln solution file.
+
+## Configuration
+
+Configuration settings are managed through a appsettings.json file. This file includes settings such as the base URL for testing and credentials.
+
+**_Example appsettings.json:_**
+
+```bash
+{
+   "baseUrl": "https://demowebshop.tricentis.com/",
+}
+```
+
+Place the appsettings.json file in the root of the project.
+
+## Usage
+
+**_Running Tests:_**
+
+To execute the tests:
+
+- Open Visual Studio.
+
+- Navigate to the Test Explorer.
+
+- Select and run the tests.
