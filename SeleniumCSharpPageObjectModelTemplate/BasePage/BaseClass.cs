@@ -29,7 +29,7 @@ namespace SeleniumCSharpPageObjectModelTemplate.BasePage
             //_options.AddArgument("--incognito");
             //_options.AddArgument("user-data-dir=C:\\Users\\Amine\\AppData\\Local\\Google\\Chrome\\User Data");
             //_options.AddArgument("profile-directory=Profile 3");
-            _options.AddArgument("--headless");
+            _options.AddArgument("--headless"); // run tests in headless mode
             _options.AddArgument("start-maximized"); // open Browser in maximized mode
             _options.AddArgument("disable-infobars"); // disabling infobars
             _options.AddArgument("--disable-extensions"); // disabling extensions
