@@ -1,7 +1,9 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.Extensions.Configuration;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using SeleniumCSharpPageObjectModelTemplate.PageObjects;
+using System.IO;
 
 namespace SeleniumCSharpPageObjectModelTemplate.BasePage
 {
@@ -15,12 +17,20 @@ namespace SeleniumCSharpPageObjectModelTemplate.BasePage
         public static HomePage _homePage;
         public static RegistrationPage _registrationPage;
         public static LoginPage _loginPage;
-
-        private string _baseUrl = "https://demowebshop.tricentis.com/";
+        public static IConfigurationRoot Configuration { get; private set; }
 
         [SetUp]
         public void Init()
         {
+            
+            var builder = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
+            Configuration = builder.Build();
+
+            string _baseUrl = Configuration["baseUrl"];
+
             _options = new ChromeOptions();
 
             _options.AddArgument("--disable-popup-blocking");
