@@ -16,12 +16,11 @@ namespace SeleniumCSharpPageObjectModelTemplate.BasePage
         public static RegistrationPage _registrationPage;
         public static LoginPage _loginPage;
 
+        private string _baseUrl = "https://demowebshop.tricentis.com/";
+
         [SetUp]
         public void Init()
         {
-            _homePage = new HomePage(_driver);
-            _registrationPage = new RegistrationPage(_driver);
-            _loginPage = new LoginPage(_driver);
             _options = new ChromeOptions();
 
             _options.AddArgument("--disable-popup-blocking");
@@ -33,7 +32,11 @@ namespace SeleniumCSharpPageObjectModelTemplate.BasePage
 
             _driver = new ChromeDriver(_options);
 
-            _driver.Navigate().GoToUrl("https://demowebshop.tricentis.com/");
+            _homePage = new HomePage(_driver);
+            _registrationPage = new RegistrationPage(_driver);
+            _loginPage = new LoginPage(_driver);
+            
+            _driver.Navigate().GoToUrl(_baseUrl);
 
             _driver.Manage().Window.Maximize();
         }

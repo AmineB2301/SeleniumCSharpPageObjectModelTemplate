@@ -5,7 +5,7 @@ namespace SeleniumCSharpPageObjectModelTemplate.PageObjects
 {
     public class LoginPage
     {
-        private IWebDriver _driver;
+        private readonly IWebDriver _driver;
 
         [FindsBy(How = How.ClassName, Using = "")]
         private IWebElement Txt { get; set; }

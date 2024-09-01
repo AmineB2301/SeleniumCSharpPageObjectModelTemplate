@@ -5,7 +5,7 @@ namespace SeleniumCSharpPageObjectModelTemplate.PageObjects
 {
     public class HomePage
     {
-        private IWebDriver _driver;
+        private readonly IWebDriver _driver;
 
         [FindsBy(How = How.ClassName, Using = "ico-register")]
         private IWebElement RegisterLnk { get; set; }
