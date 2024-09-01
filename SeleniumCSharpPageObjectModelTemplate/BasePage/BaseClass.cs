@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using SeleniumCSharpPageObjectModelTemplate.PageObjects;
 using SeleniumCSharpPageObjectModelTemplate.Utils;
+using System;
 
 namespace SeleniumCSharpPageObjectModelTemplate.BasePage
 {
@@ -11,6 +12,7 @@ namespace SeleniumCSharpPageObjectModelTemplate.BasePage
     /// </summary>
     public class BaseClass
     {
+        [ThreadStatic]
         public static IWebDriver _driver;
         public static ChromeOptions _options;
         public static HomePage _homePage;
