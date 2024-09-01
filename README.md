@@ -18,9 +18,6 @@ This project is aimed at creating a robust and reusable template for Selenium au
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
