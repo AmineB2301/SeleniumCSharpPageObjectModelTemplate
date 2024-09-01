@@ -18,6 +18,7 @@ This project is aimed at creating a robust and reusable template for Selenium au
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
+- [License](#license)
 
 ## Features
 
@@ -98,3 +99,7 @@ To execute the tests:
 - Navigate to the Test Explorer.
 
 - Select and run the tests.
+
+## License
+
+This project is licensed under the [Non-Commercial License Agreement](LICENSE).
