@@ -1,9 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using SeleniumCSharpPageObjectModelTemplate.PageObjects;
-using System.IO;
+using SeleniumCSharpPageObjectModelTemplate.Utils;
 
 namespace SeleniumCSharpPageObjectModelTemplate.BasePage
 {
@@ -17,29 +16,28 @@ namespace SeleniumCSharpPageObjectModelTemplate.BasePage
         public static HomePage _homePage;
         public static RegistrationPage _registrationPage;
         public static LoginPage _loginPage;
-        public static IConfigurationRoot Configuration { get; private set; }
+        private ConfigurationManager _configurationManager;
+        private string _baseUrl;
 
         [SetUp]
         public void Init()
         {
-            
-            var builder = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-
-            Configuration = builder.Build();
-
-            string _baseUrl = Configuration["baseUrl"];
+            _configurationManager = new ConfigurationManager();
+            _baseUrl = _configurationManager.GetConfigValue("baseUrl");
 
             _options = new ChromeOptions();
-
-            _options.AddArgument("--disable-popup-blocking");
-            _options.AddArgument("--disable-extensions");
-            _options.AddArgument("--incognito");
-            //_options.AddArgument("user-data-dir=C:\\Users\\<VotreNom>\\AppData\\Local\\Google\\Chrome\\User Data");
-            // Spécifiez le nom du profil spécifique à utiliser (si vous avez plusieurs profils)
-            //_options.AddArgument("profile-directory=Default"); // Remplacez "Default" par le nom de votre profil
-
+            //_options.AddArgument("--incognito");
+            //_options.AddArgument("user-data-dir=C:\\Users\\Amine\\AppData\\Local\\Google\\Chrome\\User Data");
+            //_options.AddArgument("profile-directory=Profile 3");
+            _options.AddArgument("--headless");
+            _options.AddArgument("start-maximized"); // open Browser in maximized mode
+            _options.AddArgument("disable-infobars"); // disabling infobars
+            _options.AddArgument("--disable-extensions"); // disabling extensions
+            _options.AddArgument("--disable-gpu"); // applicable to windows os only
+            _options.AddArgument("--disable-dev-shm-usage"); // overcome limited resource problems
+            _options.AddArgument("--no-sandbox"); // Bypass OS security model
+            _options.AddArgument("--disable-popup-blocking"); // Bypass popup
+            
             _driver = new ChromeDriver(_options);
 
             _homePage = new HomePage(_driver);
@@ -47,8 +45,6 @@ namespace SeleniumCSharpPageObjectModelTemplate.BasePage
             _loginPage = new LoginPage(_driver);
             
             _driver.Navigate().GoToUrl(_baseUrl);
-
-            _driver.Manage().Window.Maximize();
         }
     }
 }
